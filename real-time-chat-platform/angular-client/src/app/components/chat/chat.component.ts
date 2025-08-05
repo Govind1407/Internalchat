@@ -396,6 +396,10 @@ import { NotificationService } from '../../services/notification.service';
       height: 48px;
     }
 
+    ::ng-deep .mat-mdc-form-field-textarea-control{
+    color: black !important;
+    }
+
     ::ng-deep .mat-mdc-form-field-subscript-wrapper {
       display: none;
     }

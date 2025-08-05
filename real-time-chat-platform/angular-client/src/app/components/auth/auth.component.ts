@@ -201,7 +201,7 @@ export class AuthComponent implements OnInit {
       this.isLoading = true;
       const { username } = this.loginForm.value;
 
-      this.authService.login({ UsernameOrEmail: username, password:"Password@123" }).subscribe({
+      this.authService.login({ username, password:"Password@123" }).subscribe({
         next: (response) => {
           this.snackBar.open(`Welcome back, ${response.user.username}!`, 'Close', {
             duration: 3000,
