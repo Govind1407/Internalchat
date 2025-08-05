@@ -1,24 +1,13 @@
-/* Material Design and Global Styles */
-@import '~@angular/material/theming';
-
 // Custom theme colors
-$custom-primary: mat.define-palette(mat.$purple-palette, 500, 100, 900);
-$custom-accent: mat.define-palette(mat.$pink-palette, 500, 100, 900);
-$custom-warn: mat.define-palette(mat.$red-palette);
+$custom-primary: #9c27b0; // Purple
+$custom-accent: #e91e63;  // Pink
+$custom-warn: #f44336;    // Red
 
-$custom-theme: mat.define-light-theme((
-  color: (
-    primary: $custom-primary,
-    accent: $custom-accent,
-    warn: $custom-warn,
-  ),
-  typography: mat.define-typography-config(),
-  density: 0,
-));
+// Typography and density (if needed)
+$font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+$background-color: #f5f5f5;
 
-@include mat.all-component-themes($custom-theme);
-
-/* Global Reset and Base Styles */
+// Global Reset and Base Styles
 * {
   margin: 0;
   padding: 0;
@@ -27,11 +16,11 @@ $custom-theme: mat.define-light-theme((
 
 html, body {
   height: 100%;
-  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-  background: #f5f5f5;
+  font-family: $font-family;
+  background: $background-color;
 }
 
-/* Custom Scrollbar */
+// Custom Scrollbar
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -51,7 +40,7 @@ html, body {
   background: #a8a8a8;
 }
 
-/* Material Design Overrides */
+// Material Design Overrides
 .mat-mdc-raised-button.mat-primary {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
   color: white !important;
@@ -76,7 +65,7 @@ html, body {
   color: #667eea !important;
 }
 
-/* Custom Snackbar Styles */
+// Custom Snackbar Styles
 .success-snackbar {
   background: #4caf50 !important;
   color: white !important;
@@ -92,7 +81,7 @@ html, body {
   color: white !important;
 }
 
-/* Animation Classes */
+// Animation Classes
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -111,7 +100,7 @@ html, body {
   animation: slideIn 0.3s ease-out;
 }
 
-/* Loading States */
+// Loading States
 .loading-overlay {
   position: fixed;
   top: 0;
@@ -125,7 +114,7 @@ html, body {
   z-index: 9999;
 }
 
-/* Utility Classes */
+// Utility Classes
 .text-center { text-align: center; }
 .text-left { text-align: left; }
 .text-right { text-align: right; }
@@ -156,7 +145,7 @@ html, body {
 .shadow-md { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); }
 .shadow-lg { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); }
 
-/* Responsive Design */
+// Responsive Design
 @media (max-width: 768px) {
   .hide-mobile { display: none !important; }
   
@@ -173,7 +162,7 @@ html, body {
   .hide-desktop { display: none !important; }
 }
 
-/* Custom Gradient Backgrounds */
+// Custom Gradient Backgrounds
 .gradient-primary {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
@@ -190,7 +179,7 @@ html, body {
   background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
 }
 
-/* Focus and Accessibility */
+// Focus and Accessibility
 .mat-mdc-button:focus,
 .mat-mdc-raised-button:focus,
 .mat-mdc-icon-button:focus {
@@ -198,7 +187,7 @@ html, body {
   outline-offset: 2px;
 }
 
-/* High contrast mode support */
+// High contrast mode support
 @media (prefers-contrast: high) {
   .mat-toolbar.mat-primary,
   .mat-mdc-raised-button.mat-primary,
@@ -208,11 +197,11 @@ html, body {
   }
 }
 
-/* Reduced motion support */
+// Reduced motion support
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-} 
+}
