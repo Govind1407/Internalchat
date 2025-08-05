@@ -9,7 +9,7 @@ import { User } from '../models/user.model';
 })
 export class SocketService {
   private socket: Socket | null = null;
-  private readonly serverUrl = window.location.origin;
+  private readonly serverUrl = 'http://localhost:5000'; // Fixed: direct connection to Socket.IO server
   
   // Subjects for real-time data
   private messagesSubject = new BehaviorSubject<Message[]>([]);
