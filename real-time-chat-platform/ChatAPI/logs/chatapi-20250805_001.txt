@@ -1,0 +1,102 @@
+2025-08-05 10:48:43.187 +05:30 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-08-05 10:48:49.062 +05:30 [INF] Saved 1 entities to in-memory store.
+2025-08-05 10:48:49.240 +05:30 [INF] Database initialized successfully
+2025-08-05 10:48:49.302 +05:30 [INF] Starting Chat API...
+2025-08-05 10:48:49.340 +05:30 [INF] Environment: Development
+2025-08-05 10:48:49.351 +05:30 [INF] Chat Hub available at: /chatHub
+2025-08-05 10:48:49.355 +05:30 [INF] Swagger UI available at: /
+2025-08-05 10:48:49.585 +05:30 [INF] User profile is available. Using 'C:\Users\2419299\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-05 10:48:50.386 +05:30 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-08-05 10:48:51.190 +05:30 [INF] Now listening on: https://localhost:59068
+2025-08-05 10:48:51.196 +05:30 [INF] Now listening on: http://localhost:59069
+2025-08-05 10:48:51.323 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-05 10:48:51.334 +05:30 [INF] Hosting environment: Development
+2025-08-05 10:48:51.340 +05:30 [INF] Content root path: C:\real-time-chat-platform\ChatAPI
+2025-08-05 10:49:48.473 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:59069/ - null null
+2025-08-05 10:49:49.502 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:59069/ - 301 0 null 1054.7619ms
+2025-08-05 10:49:49.520 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:59069/index.html - null null
+2025-08-05 10:49:49.869 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:59069/index.html - 200 null text/html;charset=utf-8 349.4496ms
+2025-08-05 10:49:49.940 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:59069/swagger-ui.css - null null
+2025-08-05 10:49:49.982 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:59069/swagger-ui-bundle.js - null null
+2025-08-05 10:49:50.012 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:59069/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-05 10:49:49.994 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:59069/swagger-ui-standalone-preset.js - null null
+2025-08-05 10:49:50.332 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:59069/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 335.9724ms
+2025-08-05 10:49:50.420 +05:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-08-05 10:49:50.079 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:59069/_vs/browserLink - null null
+2025-08-05 10:49:50.462 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-08-05 10:49:50.470 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-08-05 10:49:50.473 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:59069/swagger-ui.css - 200 143943 text/css 533.7819ms
+2025-08-05 10:49:50.501 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:59069/swagger-ui-bundle.js - 200 1096145 text/javascript 519.1802ms
+2025-08-05 10:49:50.490 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:59069/swagger-ui-standalone-preset.js - 200 339486 text/javascript 496.2182ms
+2025-08-05 10:49:50.829 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:59069/_vs/browserLink - 200 null text/javascript; charset=UTF-8 750.1376ms
+2025-08-05 10:49:50.986 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:59069/swagger/v1/swagger.json - null null
+2025-08-05 10:49:51.014 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:59069/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 29.0988ms
+2025-08-05 10:49:51.134 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:59069/favicon-32x32.png - null null
+2025-08-05 10:49:51.146 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-08-05 10:49:51.151 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:59069/favicon-32x32.png - 200 628 image/png 17.7635ms
+2025-08-05 10:51:35.615 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:59069/index.html - null null
+2025-08-05 10:51:35.679 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:59069/index.html - 200 null text/html;charset=utf-8 64.337ms
+2025-08-05 11:05:36.131 +05:30 [INF] Saved 1 entities to in-memory store.
+2025-08-05 11:05:36.447 +05:30 [INF] Database initialized successfully
+2025-08-05 11:05:36.470 +05:30 [INF] Starting Chat API...
+2025-08-05 11:05:36.478 +05:30 [INF] Environment: Development
+2025-08-05 11:05:36.507 +05:30 [INF] Chat Hub available at: /chatHub
+2025-08-05 11:05:36.511 +05:30 [INF] Swagger UI available at: /
+2025-08-05 11:05:36.754 +05:30 [INF] User profile is available. Using 'C:\Users\2419299\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-05 11:05:38.568 +05:30 [INF] Now listening on: https://localhost:59068
+2025-08-05 11:05:38.577 +05:30 [INF] Now listening on: http://localhost:59069
+2025-08-05 11:05:38.957 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-05 11:05:39.090 +05:30 [INF] Hosting environment: Development
+2025-08-05 11:05:39.270 +05:30 [INF] Content root path: C:\real-time-chat-platform\ChatAPI
+2025-08-05 11:05:42.252 +05:30 [INF] Request starting HTTP/2 GET https://localhost:59068/ - null null
+2025-08-05 11:05:43.698 +05:30 [INF] Request finished HTTP/2 GET https://localhost:59068/ - 301 0 null 1512.5215ms
+2025-08-05 11:05:43.739 +05:30 [INF] Request starting HTTP/2 GET https://localhost:59068/index.html - null null
+2025-08-05 11:05:44.244 +05:30 [INF] Request finished HTTP/2 GET https://localhost:59068/index.html - 200 null text/html;charset=utf-8 504.9253ms
+2025-08-05 11:05:44.268 +05:30 [INF] Request starting HTTP/2 GET https://localhost:59068/swagger-ui.css - null null
+2025-08-05 11:05:44.268 +05:30 [INF] Request starting HTTP/2 GET https://localhost:59068/swagger-ui-bundle.js - null null
+2025-08-05 11:05:44.268 +05:30 [INF] Request starting HTTP/2 GET https://localhost:59068/swagger-ui-standalone-preset.js - null null
+2025-08-05 11:05:44.270 +05:30 [INF] Request starting HTTP/2 GET https://localhost:59068/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-05 11:05:44.270 +05:30 [INF] Request starting HTTP/2 GET https://localhost:59068/_vs/browserLink - null null
+2025-08-05 11:05:44.540 +05:30 [INF] Request finished HTTP/2 GET https://localhost:59068/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 271.0881ms
+2025-08-05 11:05:44.596 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-08-05 11:05:44.596 +05:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-08-05 11:05:44.697 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-08-05 11:05:44.710 +05:30 [INF] Request finished HTTP/2 GET https://localhost:59068/swagger-ui-standalone-preset.js - 200 339486 text/javascript 441.3262ms
+2025-08-05 11:05:44.738 +05:30 [INF] Request finished HTTP/2 GET https://localhost:59068/swagger-ui.css - 200 143943 text/css 470.2458ms
+2025-08-05 11:05:44.757 +05:30 [INF] Request finished HTTP/2 GET https://localhost:59068/swagger-ui-bundle.js - 200 1096145 text/javascript 488.3286ms
+2025-08-05 11:05:44.841 +05:30 [INF] Request finished HTTP/2 GET https://localhost:59068/_vs/browserLink - 200 null text/javascript; charset=UTF-8 572.7267ms
+2025-08-05 11:05:45.160 +05:30 [INF] Request starting HTTP/2 GET https://localhost:59068/swagger/v1/swagger.json - null null
+2025-08-05 11:05:45.243 +05:30 [INF] Request starting HTTP/2 GET https://localhost:59068/favicon-32x32.png - null null
+2025-08-05 11:05:45.297 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-08-05 11:05:45.310 +05:30 [INF] Request finished HTTP/2 GET https://localhost:59068/favicon-32x32.png - 200 628 image/png 68.3363ms
+2025-08-05 11:05:45.393 +05:30 [INF] Request finished HTTP/2 GET https://localhost:59068/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 234.2452ms
+2025-08-05 11:06:17.550 +05:30 [INF] Request starting HTTP/2 POST https://localhost:59068/api/Auth/register - application/json 122
+2025-08-05 11:06:17.668 +05:30 [INF] CORS policy execution failed.
+2025-08-05 11:06:17.675 +05:30 [INF] Request origin https://localhost:59068 does not have permission to access the resource.
+2025-08-05 11:06:23.071 +05:30 [INF] Executing endpoint 'ChatAPI.Controllers.AuthController.Register (ChatAPI)'
+2025-08-05 11:06:23.150 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[ChatAPI.Models.AuthResponseDto]] Register(ChatAPI.Models.CreateUserDto) on controller ChatAPI.Controllers.AuthController (ChatAPI).
+2025-08-05 11:06:23.619 +05:30 [INF] Executing action method ChatAPI.Controllers.AuthController.Register (ChatAPI) - Validation state: "Valid"
+2025-08-05 11:06:26.029 +05:30 [INF] Saved 2 entities to in-memory store.
+2025-08-05 11:06:26.457 +05:30 [INF] New user registered: string (user@example.com)
+2025-08-05 11:06:26.474 +05:30 [INF] User registered successfully: string
+2025-08-05 11:06:26.504 +05:30 [INF] Executed action method ChatAPI.Controllers.AuthController.Register (ChatAPI), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2859.2031ms.
+2025-08-05 11:06:26.534 +05:30 [INF] Executing OkObjectResult, writing value of type 'ChatAPI.Models.AuthResponseDto'.
+2025-08-05 11:06:26.601 +05:30 [INF] Executed action ChatAPI.Controllers.AuthController.Register (ChatAPI) in 3425.9887ms
+2025-08-05 11:06:26.611 +05:30 [INF] Executed endpoint 'ChatAPI.Controllers.AuthController.Register (ChatAPI)'
+2025-08-05 11:06:26.627 +05:30 [INF] Request finished HTTP/2 POST https://localhost:59068/api/Auth/register - 200 null application/json; charset=utf-8 9077.006ms
+2025-08-05 11:40:46.836 +05:30 [INF] Saved 1 entities to in-memory store.
+2025-08-05 11:40:46.922 +05:30 [INF] Database initialized successfully
+2025-08-05 11:40:46.930 +05:30 [INF] Starting Chat API...
+2025-08-05 11:40:46.935 +05:30 [INF] Environment: Development
+2025-08-05 11:40:46.939 +05:30 [INF] Chat Hub available at: /chatHub
+2025-08-05 11:40:46.943 +05:30 [INF] Swagger UI available at: /
+2025-08-05 11:40:47.006 +05:30 [INF] User profile is available. Using 'C:\Users\2419299\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-05 11:40:47.356 +05:30 [INF] Now listening on: https://localhost:59068
+2025-08-05 11:40:47.358 +05:30 [INF] Now listening on: http://localhost:59069
+2025-08-05 11:40:47.362 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-05 11:40:47.363 +05:30 [INF] Hosting environment: Development
+2025-08-05 11:40:47.364 +05:30 [INF] Content root path: C:\real-time-chat-platform\ChatAPI
+2025-08-05 11:41:10.784 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:59069/index.html - null null
+2025-08-05 11:41:10.960 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:59069/index.html - 200 null text/html;charset=utf-8 175.6873ms
+2025-08-05 11:41:11.193 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:59069/swagger/v1/swagger.json - null null
+2025-08-05 11:41:11.370 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:59069/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 176.8374ms
