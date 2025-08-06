@@ -396,7 +396,7 @@ import { NotificationService } from '../../services/notification.service';
       height: 48px;
     }
 
-    ::ng-deep .mat-mdc-form-field-textarea-control{
+    ::ng-deep .mat-mdc-form-field-textarea-control, .message-content{
     color: black !important;
     }
 
