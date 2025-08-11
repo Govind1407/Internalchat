@@ -50,7 +50,10 @@ import { AuthService } from '../../services/auth.service';
 
                 <mat-form-field appearance="outline" class="full-width">
                   <mat-label>Password</mat-label>
-                  <input matInput formControlName="password" type="password" placeholder="Enter your password" />
+                  <input matInput formControlName="password" [type]="hideLoginPassword ? 'password' : 'text'" placeholder="Enter your password" />
+                  <button mat-icon-button matSuffix (click)="hideLoginPassword = !hideLoginPassword" type="button">
+                    <mat-icon>{{hideLoginPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
                   <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
                     Password is required
                   </mat-error>
@@ -95,7 +98,10 @@ import { AuthService } from '../../services/auth.service';
 
                 <mat-form-field appearance="outline" class="full-width">
                   <mat-label>Password</mat-label>
-                  <input matInput formControlName="password" type="password" placeholder="Create a password" />
+                  <input matInput formControlName="password" [type]="hideRegisterPassword ? 'password' : 'text'" placeholder="Create a password" />
+                  <button mat-icon-button matSuffix (click)="hideRegisterPassword = !hideRegisterPassword" type="button">
+                    <mat-icon>{{hideRegisterPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
                   <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
                     Password is required
                   </mat-error>
@@ -191,6 +197,8 @@ export class AuthComponent implements OnInit {
   registerForm: FormGroup;
   isLoading = false;
   selectedTabIndex = 0;
+  hideLoginPassword = true;
+  hideRegisterPassword = true;
 
   constructor(
     private fb: FormBuilder,

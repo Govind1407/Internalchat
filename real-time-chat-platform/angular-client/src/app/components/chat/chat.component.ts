@@ -78,6 +78,34 @@ import { NotificationService } from '../../services/notification.service';
       </mat-toolbar>
 
       <div class="chat-container">
+        <!-- Notification List Tab -->
+        <div *ngIf="showNotificationList" class="notification-list-tab">
+          <mat-card class="notification-list-card">
+            <div class="notification-list-header">
+              <span>Notifications</span>
+              <button mat-icon-button (click)="showNotificationList = false" matTooltip="Close">
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+            <mat-divider></mat-divider>
+            <div *ngIf="notificationMessages.length === 0" class="notification-empty">No notifications yet.</div>
+            <mat-list *ngIf="notificationMessages.length > 0">
+              <mat-list-item *ngFor="let msg of notificationMessages; let i = index" [ngClass]="{'notification-read': msg.read}">
+                <img matListItemAvatar [src]="msg.user.avatar" [alt]="msg.user.username">
+                <div matListItemTitle class="notification-content">{{ msg.user.username }}</div>
+                <div matListItemLine class="notification-content">{{ msg.content }}</div>
+                <div matListItemLine class="notification-time">{{ formatTime(msg.timestamp) }}</div>
+                <button mat-icon-button color="primary" *ngIf="!msg.read" (click)="markNotificationAsRead(i)" matTooltip="Mark as read">
+                  <mat-icon>done</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteNotification(i)" matTooltip="Delete notification">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-list-item>
+            </mat-list>
+          </mat-card>
+        </div>
+
         <!-- Sidebar -->
         <mat-sidenav-container class="sidenav-container">
           <mat-sidenav 
@@ -102,7 +130,7 @@ import { NotificationService } from '../../services/notification.service';
                 <mat-list class="users-list">
                   <mat-list-item *ngFor="let user of onlineUsers" class="user-item">
                     <img matListItemAvatar [src]="user.avatar" [alt]="user.username">
-                    <div matListItemTitle>{{ user.username }}</div>
+                    <div matListItemTitle class="online-username">{{ user.username }}</div>
                     <div matListItemLine class="user-status">
                       <mat-icon class="online-indicator">fiber_manual_record</mat-icon>
                       Online
@@ -179,6 +207,18 @@ import { NotificationService } from '../../services/notification.service';
     </div>
   `,
   styles: [`
+  .online-username {
+      color: #222 !important;
+      background: #fffbe7;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 16px;
+      letter-spacing: 0.2px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+      display: inline-block;
+    }
+    
     .chat-layout {
       height: 100vh;
       display: flex;
@@ -412,6 +452,47 @@ import { NotificationService } from '../../services/notification.service';
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
 
+    .notification-list-tab {
+      position: absolute;
+      top: 70px;
+      right: 32px;
+      z-index: 2000;
+      width: 340px;
+      max-width: 90vw;
+    }
+    .notification-list-card {
+      padding: 0;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      background: #fff;
+    }
+    .notification-list-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px 8px 20px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .notification-empty {
+      padding: 24px;
+      text-align: center;
+      color: #888;
+    }
+    .notification-time {
+      font-size: 11px;
+      color: #888 !important;
+    }
+    .notification-content {
+      font-size: 14px;
+      color: #333 !important;
+      background: transparent !important;
+    }
+    .notification-read {
+      background: #f3f3f3 !important;
+      opacity: 0.7;
+    }
+
     @media (max-width: 768px) {
       .message-wrapper {
         max-width: 85%;
@@ -435,6 +516,8 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
   isConnected = false;
   notificationsEnabled = false;
   notificationCount = 0;
+  showNotificationList = false;
+  notificationMessages: (Message & { read?: boolean })[] = [];
 
   private destroy$ = new Subject<void>();
   private shouldScrollToBottom = true;
@@ -487,6 +570,18 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.socketService.messages$
       .pipe(takeUntil(this.destroy$))
       .subscribe(messages => {
+        // Detect new message
+        if (messages.length > this.messages.length) {
+          const newMessage = messages[messages.length - 1];
+          // Only notify if not own message
+          if (newMessage.userId !== this.currentUser?.id) {
+            this.showNewMessageNotification(newMessage);
+            this.notificationMessages = [
+              ...this.notificationMessages,
+              { ...newMessage, read: false }
+            ];
+          }
+        }
         this.messages = messages;
         this.shouldScrollToBottom = true;
       });
@@ -515,6 +610,28 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
       });
   }
 
+  private showNewMessageNotification(message: Message): void {
+    if (this.notificationsEnabled && this.notificationService.isEnabled()) {
+      // Use NotificationService if it wraps Notification API, else use Notification directly
+      if ("Notification" in window) {
+        const title = `${message.user.username} sent a message`;
+        const options: NotificationOptions = {
+          body: message.content,
+          icon: message.user.avatar || undefined
+        };
+        try {
+          new Notification(title, options);
+        } catch (e) {
+          // fallback: show snackbar
+          this.snackBar.open(`${message.user.username}: ${message.content}`, 'Close', { duration: 4000 });
+        }
+      } else {
+        this.snackBar.open(`${message.user.username}: ${message.content}`, 'Close', { duration: 4000 });
+      }
+      this.notificationCount++;
+    }
+  }
+
   private async loadInitialData(): Promise<void> {
     // Load messages from API
     // This would typically be handled by a chat service
@@ -529,19 +646,10 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   toggleNotifications(): void {
-    if (this.notificationsEnabled) {
-      this.notificationService.disable();
-      this.notificationsEnabled = false;
-      this.snackBar.open('Notifications disabled', 'Close', { duration: 2000 });
-    } else {
-      this.notificationService.requestPermission().then(granted => {
-        this.notificationsEnabled = granted;
-        if (granted) {
-          this.snackBar.open('Notifications enabled', 'Close', { duration: 2000 });
-        } else {
-          this.snackBar.open('Notification permission denied', 'Close', { duration: 3000 });
-        }
-      });
+    // Toggle notification list tab
+    this.showNotificationList = !this.showNotificationList;
+    if (this.showNotificationList) {
+      this.notificationCount = 0;
     }
   }
 
@@ -552,6 +660,8 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.socketService.sendMessage({ content });
     this.messageForm.reset();
     this.socketService.stopTyping();
+    // Hide notification list if open
+    this.showNotificationList = false;
   }
 
   onKeyDown(event: KeyboardEvent): void {
@@ -584,6 +694,16 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     });
   }
 
+  markNotificationAsRead(idx: number): void {
+    this.notificationMessages = this.notificationMessages.map((msg, i) =>
+      i === idx ? { ...msg, read: true } : msg
+    );
+  }
+
+  deleteNotification(idx: number): void {
+    this.notificationMessages = this.notificationMessages.filter((_, i) => i !== idx);
+  }
+
   private scrollToBottom(): void {
     try {
       if (this.messagesContainer) {
@@ -594,4 +714,4 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
       console.error('Error scrolling to bottom:', err);
     }
   }
-} 
+}
