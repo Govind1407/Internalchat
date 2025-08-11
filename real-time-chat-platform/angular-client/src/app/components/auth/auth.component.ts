@@ -48,6 +48,14 @@ import { AuthService } from '../../services/auth.service';
                   </mat-error>
                 </mat-form-field>
 
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Password</mat-label>
+                  <input matInput formControlName="password" type="password" placeholder="Enter your password" />
+                  <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+                    Password is required
+                  </mat-error>
+                </mat-form-field>
+
                 <button 
                   mat-raised-button 
                   color="primary" 
@@ -85,6 +93,17 @@ import { AuthService } from '../../services/auth.service';
                   </mat-error>
                 </mat-form-field>
 
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Password</mat-label>
+                  <input matInput formControlName="password" type="password" placeholder="Create a password" />
+                  <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
+                    Password is required
+                  </mat-error>
+                  <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">
+                    Password must be at least 6 characters
+                  </mat-error>
+                </mat-form-field>
+                
                 <button 
                   mat-raised-button 
                   color="primary" 
@@ -180,12 +199,14 @@ export class AuthComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]]
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
 
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
@@ -199,15 +220,18 @@ export class AuthComponent implements OnInit {
   onLogin(): void {
     if (this.loginForm.valid) {
       this.isLoading = true;
-      const { username } = this.loginForm.value;
-
-      this.authService.login({ username, password:"Password@123" }).subscribe({
+      const { username, password } = this.loginForm.value;
+  
+      this.authService.login({ username: username, password }).subscribe({
         next: (response) => {
           this.snackBar.open(`Welcome back, ${response.user.username}!`, 'Close', {
             duration: 3000,
-            panelClass: ['success-snackbar']
+            panelClass: ['success-snackbar'],
+            horizontalPosition: 'right', // Set horizontal position
+            verticalPosition: 'top'     // Set vertical position
           });
           this.router.navigate(['/chat']);
+          this.isLoading = false; // Reset isLoading on success
         },
         error: (error) => {
           this.snackBar.open(
@@ -215,29 +239,32 @@ export class AuthComponent implements OnInit {
             'Close',
             {
               duration: 5000,
-              panelClass: ['error-snackbar']
+              panelClass: ['error-snackbar'],
+              horizontalPosition: 'right', // Set horizontal position
+              verticalPosition: 'top'     // Set vertical position
             }
           );
-        },
-        complete: () => {
-          this.isLoading = false;
+          this.isLoading = false; // Reset isLoading on error
         }
       });
     }
   }
-
+  
   onRegister(): void {
     if (this.registerForm.valid) {
       this.isLoading = true;
-      const { username, email } = this.registerForm.value;
-
-      this.authService.register({ username, email }).subscribe({
+      const { username, email, password } = this.registerForm.value;
+  
+      this.authService.register({ username, email, password }).subscribe({
         next: (response) => {
           this.snackBar.open(`Welcome to the chat, ${response.user.username}!`, 'Close', {
             duration: 3000,
-            panelClass: ['success-snackbar']
+            panelClass: ['success-snackbar'],
+            horizontalPosition: 'right', // Set horizontal position
+            verticalPosition: 'top'     // Set vertical position
           });
           this.router.navigate(['/chat']);
+          this.isLoading = false; // Reset isLoading on success
         },
         error: (error) => {
           this.snackBar.open(
@@ -245,12 +272,12 @@ export class AuthComponent implements OnInit {
             'Close',
             {
               duration: 5000,
-              panelClass: ['error-snackbar']
+              panelClass: ['error-snackbar'],
+              horizontalPosition: 'right', // Set horizontal position
+              verticalPosition: 'top'     // Set vertical position
             }
           );
-        },
-        complete: () => {
-          this.isLoading = false;
+          this.isLoading = false; // Reset isLoading on error
         }
       });
     }
